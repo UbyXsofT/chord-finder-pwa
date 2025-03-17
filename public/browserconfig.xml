@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square150x150logo src="/assets/icons/windows11/Square150x150Logo.scale-100.png"/>
+      <TileColor>#0A0909</TileColor>
+    </tile>
+    <tile>
+      <wide310x150logo src="/assets/icons/windows11/Wide310x150Logo.scale-100.png"/>
+    </tile>
+    <tile>
+      <square44x44logo src="/assets/icons/windows11/Square44x44Logo.scale-100.png"/>
+    </tile>
+  </msapplication>
+</browserconfig>
+<!-- 
+Nota: Per le Tiles di Windows, potrebbe essere necessario creare un file browserconfig.xml che definisce le configurazioni delle Tiles. -->

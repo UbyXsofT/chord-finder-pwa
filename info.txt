@@ -1,0 +1,235 @@
+Pages Router (con pages/) e App Router (con app/)
+
+passaggio tra due diverse modalità di gestione del routing in Next.js: Pages Router (con pages/) e App Router (con app/). Questo cambiamento è avvenuto a partire da Next.js 13, in cui è stato introdotto l'App Router per migliorare l'esperienza di sviluppo e offrire una maggiore modularità e flessibilità.
+
+Confronto tra Pages Router (pages/) e App Router (app/)
+Routing Automatico:
+
+Pages Router (pages/): In questa modalità, ogni file all'interno della directory pages rappresenta automaticamente una route. Per esempio, pages/index.tsx rappresenta la home (/), mentre pages/about.tsx rappresenta /about.
+App Router (app/): Nell'App Router, ogni directory all'interno di app/ rappresenta una route, e i file page.tsx all'interno di tali directory rappresentano il contenuto della pagina. Per esempio, app/about/page.tsx rappresenta /about.
+Layout e Server Components:
+
+App Router introduce il concetto di layout annidati. Ogni directory può avere un file layout.tsx che definisce il layout di quella specifica route e delle sue sotto-route. Questo rende molto più facile creare layout coerenti e modulari. Ad esempio, app/layout.tsx potrebbe essere il layout principale dell'intera applicazione, mentre app/dashboard/layout.tsx potrebbe definire un layout specifico per l'area "dashboard".
+Con l'App Router, viene data priorità ai Server Components per migliorare le performance di rendering. I file .tsx nell'app sono, per impostazione predefinita, Server Components, ma possono diventare Client Components utilizzando la direttiva 'use client'; in cima al file.
+File Specifici e Modularità:
+
+_app.tsx e _document.tsx (pages/): Nel Pages Router, pages/_app.tsx viene usato per estendere l'applicazione principale, consentendo di aggiungere wrapper per ogni pagina, come temi globali o provider di contesto. pages/_document.tsx viene utilizzato per personalizzare l'HTML di base (es. <html>, <head>, <body>).
+layout.tsx (app/): Nel nuovo App Router, layout.tsx è più modulare e consente di definire layout specifici per ogni sezione dell'applicazione. Non esiste più un file _app.tsx o _document.tsx separato, poiché le funzionalità che fornivano sono integrate direttamente in questi layout e in altre parti del sistema.
+Parallel Routing e Layout Sharing:
+
+App Router permette di gestire meglio Parallel Routing e Intercepting Routes. Questo vuol dire che puoi gestire più layout nello stesso momento o condividere un layout tra più route senza necessariamente avere una relazione gerarchica stretta, migliorando la modularità del codice.
+Pro e Contro
+App Router (app/):
+
+Pro: Maggiore modularità, supporto ai Server Components per ridurre il carico sul client, facilità nella gestione di layout complessi, e una maggiore personalizzazione del routing.
+Contro: Può avere una curva di apprendimento per chi è abituato al Pages Router. Inoltre, alcune funzionalità avanzate, come la gestione dell'autenticazione, potrebbero richiedere un approccio leggermente diverso.
+Pages Router (pages/):
+
+Pro: Semplicità, facile da capire per chi è abituato al modello tradizionale di routing basato su file. Perfetto per progetti più piccoli.
+Contro: Meno flessibile e richiede file _app.tsx e _document.tsx per alcune configurazioni globali, che risultano meno modulari rispetto all'App Router.
+
+Cosa Significa per il Tuo Progetto
+Con il nuovo App Router, hai un controllo molto più dettagliato sui layout e sui componenti server/client. Puoi anche ottimizzare la tua app per performance migliori sfruttando i Server Components.
+Se decidi di usare l'App Router, preparati a riorganizzare la struttura dell'applicazione, poiché ogni route avrà una directory e potrai modularizzare facilmente i layout.
+
+Il Pages Router rimane ancora utilizzabile, quindi se preferisci il vecchio approccio o hai già esperienza con esso, puoi continuare ad usarlo, soprattutto se non hai bisogno delle nuove funzionalità offerte dall'App Router.
+Se il tuo progetto attuale utilizza la struttura app/, significa che stai lavorando con Next.js 13 o successivo, sfruttando la nuova architettura modulare. Questo è ottimo per creare un'app scalabile e moderna, ma richiede un po' di tempo per adattarsi se sei abituato alla struttura precedente.
+
+Per la navigazione di base in entrambe le modalità (App Router e Pages Router): 
+Continua a usare il componente <Link> di Next.js. Non è necessario useRouter per la maggior parte delle navigazioni.
+
+Quando usare useRouter: Usalo solo se devi accedere ai dettagli dell'URL, 
+gestire navigazioni condizionali o effettuare redirezioni programmate.
+
+structure info:
+.
+├── app
+│   ├── fonts
+│   │   ├── GeistMonoVF.woff
+│   │   └── GeistVF.woff
+│   ├── info
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── dashboard
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   │   └── stats
+│   │       └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── ui
+│   │   ├── alert-dialog.tsx
+│   │   ├── button.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   ├── navigation-menu.tsx
+│   │   ├── switch.tsx
+│   │   └── ...
+│   ├── custom
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── ThemeSwitch.tsx
+│   │   ├── MainMenu.tsx
+│   │   └── ...
+│   ├── Guide.tsx
+│   ├── icons.tsx
+│   ├── main-nav.tsx
+│   ├── page-header.tsx
+├── lib
+│   └── utils.ts
+├── public
+│   ├── assets
+│   │   ├── icons
+│   │   │   ├── android
+│   │   │   │   └── ...
+│   │   │   ├── ios
+│   │   │   │   └── ...
+│   │   │   ├── windows11
+│   │   │   │   └── ... 
+│   │   │   ├── 24x24.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── og-image.png
+│   │   │   ├── twitter-image.png
+│   │   │   └── ... 
+│   │   └── screenshots
+│   │       └── ... 
+│   ├── browserconfig.xml
+│   ├── manifest.json
+│   ├── sw.js
+│   └── workbox-1bb06f5e.js
+├── context
+│   ├── HeaderContext.tsx
+│   ├── HeaderProviderWrapper.tsx
+│   ├── ThemeContext.tsx
+│   └── ThemeProviderWrapper.tsx
+├── hooks
+│   └── ...
+├── .env.local
+├── .env.production
+├── next.config.mjs
+├── package.json
+├── postcss.config.js
+├── tailwind.config.ts
+└── tsconfig.json
+
+
+
+
+Le "App Capabilities" sono parte delle nuove funzionalità che stanno emergendo per le Progressive Web Apps (PWA), permettendo loro di comportarsi sempre più come applicazioni native. Queste capacità estendono le funzionalità delle PWA, consentendo una maggiore integrazione con il sistema operativo e offrendo un'esperienza utente più ricca. Ecco una breve spiegazione di ciascuna:
+
+1. display_override:
+   Permette di specificare modi alternativi di visualizzazione dell'app, dando più controllo su come l'app viene mostrata all'utente.
+
+2. edge_side_panel:
+   Consente alla PWA di essere visualizzata nel pannello laterale del browser Edge, offrendo un accesso rapido e contestuale.
+
+3. file_handlers:
+   Permette alla PWA di registrarsi come gestore per determinati tipi di file, consentendo all'app di aprire e manipolare file direttamente dal sistema operativo.
+
+4. handle_links:
+   Consente alla PWA di gestire link specifici, permettendo un'integrazione più profonda con il sistema e altre app.
+
+5. protocol_handlers:
+   Permette alla PWA di registrarsi come gestore per protocolli specifici, consentendo l'apertura dell'app quando vengono invocati determinati schemi URL.
+
+6. share_target:
+   Consente alla PWA di ricevere contenuti condivisi da altre app, integrandosi nel menu di condivisione del sistema operativo.
+
+7. shortcuts:
+   Permette di definire scorciatoie per azioni specifiche all'interno dell'app, accessibili dal menu contestuale dell'icona dell'app.
+
+8. widgets:
+   Consente alla PWA di fornire widget per la schermata home o il desktop, offrendo informazioni o funzionalità rapide senza aprire completamente l'app.
+
+Queste funzionalità sono particolarmente interessanti perché permettono alle PWA di integrarsi più profondamente con i sistemi operativi e di offrire esperienze più simili a quelle delle app native. Tuttavia, è importante notare che il supporto per queste funzionalità può variare a seconda del browser e del sistema operativo.
+
+Per implementare queste capacità nella tua PWA, dovrai aggiungerle al tuo file `manifest.json`. Ecco un esempio di come potresti includere alcune di queste funzionalità:
+
+
+
+```json
+{
+  "name": "La Mia PWA",
+  "short_name": "PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0A0909",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display_override": ["window-controls-overlay"],
+  "file_handlers": [
+    {
+      "action": "/open-file",
+      "accept": {
+        "text/*": [".txt"]
+      }
+    }
+  ],
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "web+miapwa",
+      "url": "/handle-protocol?protocol=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "media",
+          "accept": ["image/*", "video/*"]
+        }
+      ]
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Nuova nota",
+      "short_name": "Nota",
+      "description": "Crea una nuova nota",
+      "url": "/new-note",
+      "icons": [{ "src": "/icons/note.png", "sizes": "192x192" }]
+    }
+  ]
+}
+
+```
+
+Questo esempio include alcune delle App Capabilities che hai menzionato. Ecco alcune note su ciascuna:
+
+1. `display_override`: Qui stiamo usando "window-controls-overlay" che permette di personalizzare la barra del titolo dell'app.
+
+2. `file_handlers`: Questo esempio registra l'app per gestire file di testo.
+
+3. `handle_links`: "preferred" indica che l'app dovrebbe essere l'opzione preferita per gestire i link relativi.
+
+4. `protocol_handlers`: Questo registra un protocollo personalizzato "web+miapwa".
+
+5. `share_target`: Configura l'app per ricevere contenuti condivisi, inclusi testo, URL e file multimediali.
+
+6. `shortcuts`: Definisce una scorciatoia per creare una nuova nota rapidamente.
+
+Non ho incluso `edge_side_panel` e `widgets` in questo esempio perché sono funzionalità più specifiche e potrebbero richiedere ulteriori configurazioni o supporto del browser.
+
+Per implementare queste funzionalità, oltre a includerle nel manifest, dovrai anche gestirle nel codice della tua app. Ad esempio, per `file_handlers`, dovrai implementare la logica per aprire e gestire i file nella rotta "/open-file".
+
+Ricorda che il supporto per queste funzionalità può variare tra i browser e i sistemi operativi. È sempre una buona pratica testare la tua PWA su diversi dispositivi e browser per assicurarti che funzioni come previsto.
