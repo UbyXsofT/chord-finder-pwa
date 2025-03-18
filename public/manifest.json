@@ -1,13 +1,13 @@
 {
-  "id": "com.ubyxsoft.my-pwa-template",
-  "name": "Create Template Next.js PWA",
-  "short_name": "UbyXsoft",
+  "id": "com.ubyxsoft.chord-finder-pwa",
+  "name": "Chord Finder - Visualizzatore Accordi",
+  "short_name": "Chord Finder",
+  "description": "Esplora accordi e progressioni in tutte le tonalità",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "theme_color": "#0A0909",
   "background_color": "#ffffff",
-  "description": "Template con Next.js, TypeScript, Tailwind CSS e shadcn.",
+  "theme_color": "#4f46e5",
   "orientation": "portrait",
   "icons": [
     {

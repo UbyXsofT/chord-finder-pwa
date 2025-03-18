@@ -24,8 +24,8 @@ export default function InfoPage() {
 
 // bash
 // Copia codice
-// npx create-next-app@latest my-pwa-template -ts
-// cd my-pwa-template
+// npx create-next-app@latest chord-finder-pwa -ts
+// cd chord-finder-pwa
 // Step 2: Installare le dipendenze necessarie
 // Dobbiamo aggiungere alcune dipendenze per PWA, Tailwind CSS e shadcn:
 

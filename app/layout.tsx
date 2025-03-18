@@ -5,8 +5,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HeaderProviderWrapper from "@/context/HeaderProviderWrapper";
 import ThemeProviderWrapper from "@/context/ThemeProviderWrapper";
-import MainNav from "@/components/main-nav";
-import Footer from "@/components/custom/Footer";
+// import MainNav from "@/components/main-nav";
+// import Footer from "@/components/custom/Footer";
 import React from "react";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -23,7 +23,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
-	title: "Create Template Next.js PWA",
+	title: "Chord Finder",
 	description: "Template con Next.js, TypeScript, Tailwind CSS e shadcn.",
 	manifest: "/manifest.json",
 	icons: {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 		statusBarStyle: "default",
 	},
 	openGraph: {
-		title: "Create Template Next.js PWA",
+		title: "Chord Finder",
 		description: "Template con Next.js, TypeScript, Tailwind CSS e shadcn.",
 		url: "https://vivo-vivendo-musica.com",
 		siteName: "UbyXsoft",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Create Template Next.js PWA",
+		title: "Chord Finder",
 		description: "Template con Next.js, TypeScript, Tailwind CSS e shadcn.",
 		images: ["/twitter-image.png"],
 	},
@@ -74,9 +74,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<HeaderProviderWrapper>
 					<ThemeProviderWrapper>
-						<MainNav />
+						{/* <MainNav /> */}
 						<main>{children}</main>
-						<Footer />
+						{/* <Footer /> */}
 					</ThemeProviderWrapper>
 				</HeaderProviderWrapper>
 			</body>

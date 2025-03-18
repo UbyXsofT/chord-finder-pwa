@@ -114,11 +114,11 @@ export default function Guide() {
 			</h2>
 			<p className='mb-4'>Avvia un nuovo progetto Next.js con TypeScript utilizzando il comando:</p>
 			<pre className='bg-gray-100 dark:bg-black  p-4 rounded-md mb-4'>
-				<code className='language-bash'>npx create-next-app@latest my-pwa-template --typescript</code>
+				<code className='language-bash'>npx create-next-app@latest chord-finder-pwa --typescript</code>
 			</pre>
 			<p className='mb-4'>Entra nella directory del progetto:</p>
 			<pre className='bg-gray-100 dark:bg-black  p-4 rounded-md mb-4'>
-				<code className='language-bash'>cd my-pwa-template</code>
+				<code className='language-bash'>cd chord-finder-pwa</code>
 			</pre>
 
 			{/* Step 2 */}
